@@ -1,10 +1,10 @@
 package ru.netology.testmode.data;
 
-import lombok.Value
+import lombok.Value;
 
 public class DataHelper {
 
-    public class DataHelper() {
+    private DataHelper() {
 
     }
 
