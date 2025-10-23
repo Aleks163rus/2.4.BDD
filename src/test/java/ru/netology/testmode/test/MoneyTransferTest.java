@@ -1,15 +1,14 @@
 package ru.netology.testmode.test;
 
-import com.codeborne.selenide.Condition;
+
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.testmode.data.DataHelper;
 import ru.netology.testmode.page.DashBoardPage;
-import ru.netology.testmode.page.LoginPageV1;
 import ru.netology.testmode.page.LoginPageV2;
 
-import static com.codeborne.selenide.Selenide.$;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.netology.testmode.data.DataHelper.getAuthInfo;
 
@@ -26,7 +25,7 @@ public class MoneyTransferTest {
     public void setup() {
         var info = getAuthInfo();
         var verificationCode = DataHelper.getVerificationCode(info);
-        var loginPage = Selenide.open("http://localhost:9999", LoginPageV1.class);
+        var loginPage = Selenide.open("http://localhost:9999", LoginPageV2.class);
         var verificationPage = loginPage.validLogin(info);
         dashBoardPage = verificationPage.validVerify(verificationCode);
         firstCard = DataHelper.getFirstCardInfo(); //данные карты 1
@@ -61,8 +60,8 @@ public class MoneyTransferTest {
         int firstCardBalanceAfter = dashBoardPage.getCardBalance(firstCard);
         int secondCardBalanceAfter = dashBoardPage.getCardBalance(secondCard);
 
-        assertEquals(firstCardBalanceBefore , firstCardBalanceAfter);
-        assertEquals(secondCardBalanceBefore , secondCardBalanceAfter);
+        assertEquals(firstCardBalanceBefore, firstCardBalanceAfter);
+        assertEquals(secondCardBalanceBefore, secondCardBalanceAfter);
     }
 }
 
